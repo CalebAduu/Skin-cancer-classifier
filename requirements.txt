@@ -1,0 +1,10 @@
+torch>=2.1
+timm>=0.9.16
+pillow
+numpy
+fastapi
+uvicorn[standard]
+python-multipart
+# optional — nicer Score-CAM colormap; falls back to matplotlib if absent
+opencv-python-headless
+matplotlib

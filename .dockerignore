@@ -1,0 +1,10 @@
+.venv/
+web/
+verification_set.json
+sample.jpg
+__pycache__/
+*.pyc
+.git/
+.gitignore
+README.md
+CLAUDE.md

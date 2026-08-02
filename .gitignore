@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+saved_models/
+*.pth
+*.pt
+.venv/
+.env
+
+# real patient dermoscopy images / local test artifacts — not for a public repo
+verification_set.json
+sample.jpg
+random_noise.jpg
