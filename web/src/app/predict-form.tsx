@@ -603,7 +603,7 @@ export default function PredictForm() {
               </div>
             </div>
             <span className="shrink-0 rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-xs font-mono text-[var(--text-muted)]">
-              {result.latency_ms.toLocaleString()} ms
+              {result.latency_ms != null ? `${result.latency_ms.toLocaleString()} ms` : "—"}
             </span>
           </div>
 
