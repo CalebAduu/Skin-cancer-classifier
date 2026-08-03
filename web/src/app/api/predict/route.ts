@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SageMakerRuntimeClient, InvokeEndpointCommand } from "@aws-sdk/client-sagemaker-runtime";
 
-export const runtime = "nodejs"; // AWS SDK needs Node, not Edge
+export const runtime = "nodejs";
 
 const client = new SageMakerRuntimeClient({
   region: process.env.SM_REGION!,
@@ -25,16 +25,13 @@ export async function POST(req: NextRequest) {
       localization: form.get("localization") ?? "unknown",
     });
 
-    const t0 = performance.now();
     const res = await client.send(new InvokeEndpointCommand({
       EndpointName: process.env.SM_ENDPOINT!,
       ContentType: "application/json",
       Body: payload,
     }));
-    const latency_ms = Math.round(performance.now() - t0);
 
-    const data = JSON.parse(new TextDecoder().decode(res.Body));
-    return NextResponse.json({ ...data, latency_ms });
+    return NextResponse.json(JSON.parse(new TextDecoder().decode(res.Body)));
   } catch (err: any) {
     console.error(err);
     return NextResponse.json({ error: err?.message ?? "inference failed" }, { status: 500 });

@@ -10,3 +10,7 @@ saved_models/
 verification_set.json
 sample.jpg
 random_noise.jpg
+sagemaker/model.tar.gz
+*.tar.gz
+sagemaker/model.tar.gz
+*.tar.gz
