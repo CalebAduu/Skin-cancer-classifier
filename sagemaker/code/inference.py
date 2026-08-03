@@ -12,6 +12,7 @@ request. The heatmap panel in the UI simply won't populate via this endpoint.
 import io
 import json
 import base64
+import time
 
 from PIL import Image
 
@@ -42,6 +43,7 @@ def input_fn(request_body, content_type):
 
 
 def predict_fn(inputs, predictor):
+    t0 = time.perf_counter()
     out = predictor.predict(
         inputs["image"],
         age=inputs["age"],
@@ -49,6 +51,7 @@ def predict_fn(inputs, predictor):
         localization=inputs["localization"],
         explain=False,  # Score-CAM off on serverless (timeout risk)
     )
+    out["latency_ms"] = round((time.perf_counter() - t0) * 1000, 1)
     out["disclaimer"] = "Research prototype for decision support only; not a diagnostic device."
     return out
 
