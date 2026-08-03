@@ -284,7 +284,7 @@ export default function PredictForm() {
     formData.append("explain", String(explain));
 
     try {
-      const res = await fetch(`${API_URL}/predict`, {
+      const res = await fetch("/api/predict", {
         method: "POST",
         body: formData,
       });
