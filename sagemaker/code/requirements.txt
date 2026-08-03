@@ -1,0 +1,5 @@
+# torch + torchvision ship in the AWS PyTorch DLC — do NOT pin them here.
+# Score-CAM is disabled on this endpoint, so cv2/matplotlib are not needed.
+timm>=0.9.16
+pillow
+numpy
